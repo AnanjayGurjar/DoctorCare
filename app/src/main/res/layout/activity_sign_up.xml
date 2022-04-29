@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-<<<<<<< Updated upstream
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -69,7 +68,7 @@
                 app:startIconDrawable="@drawable/ic_email">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/user"
+                    android:id="@+id/et_email"
                     android:textColor="@color/app_blue"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -81,10 +80,7 @@
                 </com.google.android.material.textfield.TextInputEditText>
             </com.google.android.material.textfield.TextInputLayout>
 
-
-
             <com.google.android.material.textfield.TextInputLayout
-
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -99,7 +95,7 @@
                 app:startIconDrawable="@drawable/ic_lock">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/pass"
+                    android:id="@+id/et_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
@@ -126,7 +122,7 @@
                 app:startIconDrawable="@drawable/ic_lock">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/confo_pass"
+                    android:id="@+id/et_confirm_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/app_blue"
@@ -139,7 +135,7 @@
 
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/signup"
+                android:id="@+id/signupBtn"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -173,99 +169,3 @@
     </LinearLayout>
 
 </ScrollView>
-
-
-=======
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:fillViewport="true">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="16dp"
-        tools:context=".ui.login.LoginFragment">
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/user_email_container_signup"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="64dp"
-            android:hint="Email"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/logoSignup">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/user_email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textEmailAddress"/>
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/user_password_container_signup"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:hint="Password"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/user_email_container_signup">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/user_passwrod_signup"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textEmailAddress"/>
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/signupBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Login"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/user_password_container_signup"
-            android:layout_marginTop="15dp"
-            android:background="@color/teal_700"
-            android:textColor="@color/white" />
-
-        <ProgressBar
-            android:id="@+id/progressBarSignup"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/logoSignup"
-            android:layout_marginTop="8dp"
-            android:visibility="invisible"/>
-
-        <ImageView
-            android:id="@+id/logoSignup"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="30dp"
-            android:layout_width="100dp"
-            android:layout_height="100dp"/>
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/registerClickBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/signupBtn"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:text=""
-            android:layout_marginTop="12dp"
-            android:textSize="12sp"
-            android:textColor=""/>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-</ScrollView>
->>>>>>> Stashed changes

@@ -3,12 +3,10 @@ package com.holidayhack.doctorcare.authenticate
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Editable
 import android.util.Log
-import android.view.View
+import androidx.core.widget.addTextChangedListener
 import com.google.firebase.auth.FirebaseAuth
 import com.holidayhack.doctorcare.MainActivity
-import com.holidayhack.doctorcare.R
 import com.holidayhack.doctorcare.databinding.ActivitySignUpBinding
 
 class SignUpActivity : AppCompatActivity() {
@@ -22,17 +20,21 @@ class SignUpActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
+        binding.etEmail.addTextChangedListener{
+            binding.etEmail.error = null
+        }
+        binding.etPassword.addTextChangedListener{
+            binding.etPassword.error = null
+        }
 
         auth = FirebaseAuth.getInstance()
         binding.signupBtn.setOnClickListener{
-            binding.userEmailContainerSignup.error = null
-            binding.userPasswordContainerSignup.error = null
 
-            val email = binding.userEmail.text.toString()
-            val password = binding.userPasswrodSignup.text.toString()
+            val email = binding.etEmail.text.toString()
+            val password = binding.etPassword.text.toString()
+            val confirmPassword = binding.etConfirmPassword.text.toString()
 
-            if (validate(email, password)){
-                binding.progressBarSignup.visibility = View.VISIBLE
+            if (validate(email, password, confirmPassword)){
 
                 auth.createUserWithEmailAndPassword(email , password)
                     .addOnCompleteListener(this){
@@ -47,19 +49,27 @@ class SignUpActivity : AppCompatActivity() {
         }
     }
 
-    private fun validate(email: String, password: String): Boolean {
+    private fun validate(email: String, password: String, confirmPassword : String) : Boolean {
         var valid = true
 
         if (email.isBlank()){
-            binding.userEmailContainerSignup.error = "Please enter the email"
+            binding.etEmail.error = "Please enter the email"
             valid = false
         }
         if (password.isBlank()){
-            binding.userPasswordContainerSignup.error = "Please enter the password"
+            binding.etPassword.error = "Please enter the password"
             valid = false
         }
         if(password.length < 6){
-            binding.userPasswordContainerSignup.error = "Password length should be minimum of 6 characters"
+            binding.etPassword.error = "Password length should be minimum of 6 characters"
+            valid = false
+        }
+        if (confirmPassword.isBlank()){
+            binding.etPassword.error = "Please enter the password again to confirm"
+            valid = false
+        }
+        if (confirmPassword != password){
+            binding.etPassword.error = "Password does not matched with the above password"
             valid = false
         }
         return valid

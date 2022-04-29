@@ -27,15 +27,14 @@ class LoginActivity : AppCompatActivity() {
 
 
         auth = FirebaseAuth.getInstance()
-        binding.loginBtn.setOnClickListener{
-            binding.userEmailContainerLogin.error = null
-            binding.userPasswordContainerLogin.error = null
+        binding.signupBtn.setOnClickListener{
+            binding.etEmail.error = null
+            binding.etPassword.error = null
 
-            val email = binding.userEmail.text.toString()
-            val password = binding.userPasswrodLogin.text.toString()
+            val email = binding.etEmail.text.toString()
+            val password = binding.etPassword.text.toString()
 
             if (validate(email, password)){
-                binding.progressBarLogin.visibility = View.VISIBLE
 
                 auth.signInWithEmailAndPassword(email , password)
                     .addOnCompleteListener(this){
@@ -54,15 +53,15 @@ class LoginActivity : AppCompatActivity() {
         var valid = true
 
         if (email.isBlank()){
-            binding.userPasswordContainerLogin.error = "Please enter the email"
+            binding.etEmail.error = "Please enter the email"
             valid = false
         }
         if (password.isBlank()){
-            binding.userPasswordContainerLogin.error = "Please enter the password"
+            binding.etPassword.error = "Please enter the password"
             valid = false
         }
         if(password.length < 6){
-            binding.userPasswordContainerLogin.error = "Password length should be minimum of 6 characters"
+            binding.etPassword.error = "Password length should be minimum of 6 characters"
             valid = false
         }
         return valid

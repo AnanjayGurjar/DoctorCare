@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "824911015384",
+    "project_id": "doctorcare-b3e94",
+    "storage_bucket": "doctorcare-b3e94.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:824911015384:android:8c2a685e13273cfced16ad",
+        "android_client_info": {
+          "package_name": "com.holidayhack.doctorcare"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "824911015384-3ip5j2pntcnquljhvgmvpiqjub2f6i6l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBujE12UPsbJqAGFRrUH0jZrwb1eZnRx14"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "824911015384-3ip5j2pntcnquljhvgmvpiqjub2f6i6l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/firstFragment">
+
+    <fragment
+        android:id="@+id/firstFragment"
+        android:name="com.holidayhack.doctorcare.ui.fragments.FirstFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_firstFragment_to_searchPatientFragment"
+            app:destination="@id/searchPatientFragment" />
+        <action
+            android:id="@+id/action_firstFragment_to_createPatientFragment"
+            app:destination="@id/createPatientFragment" />
+        <action
+            android:id="@+id/action_firstFragment_to_doctorProfileFragment"
+            app:destination="@id/doctorProfileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createPatientFragment"
+        android:name="com.holidayhack.doctorcare.ui.fragments.CreatePatientFragment"
+        android:label="fragment_create_patient"
+        tools:layout="@layout/fragment_create_patient" />
+    <fragment
+        android:id="@+id/searchPatientFragment"
+        android:name="com.holidayhack.doctorcare.ui.fragments.SearchPatientFragment"
+        android:label="fragment_search_patient"
+        tools:layout="@layout/fragment_search_patient" >
+        <action
+            android:id="@+id/action_searchPatientFragment_to_patientDetailFragment"
+            app:destination="@id/patientDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/doctorProfileFragment"
+        android:name="com.holidayhack.doctorcare.ui.fragments.DoctorProfileFragment"
+        android:label="fragment_doctor_profile"
+        tools:layout="@layout/fragment_doctor_profile" />
+    <fragment
+        android:id="@+id/patientDetailFragment"
+        android:name="com.holidayhack.doctorcare.ui.fragments.PatientDetailFragment"
+        android:label="fragment_patient_detail"
+        tools:layout="@layout/fragment_patient_detail" />
+</navigation>

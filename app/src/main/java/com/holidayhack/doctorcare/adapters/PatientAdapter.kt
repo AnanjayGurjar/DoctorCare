@@ -1,4 +1,4 @@
-package com.holidayhack.doctorcare.ui.fragments
+package com.holidayhack.doctorcare.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -10,7 +10,7 @@ import kotlinx.android.extensions.LayoutContainer
 class PatientAdapter(private var list : MutableList<Int>)
     : RecyclerView.Adapter<PatientAdapter.viewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PatientAdapter.viewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): viewHolder {
         val itemLayout = LayoutInflater.from (parent.context)
             .inflate(R.layout.patients_list_items, parent, false)
         return viewHolder(itemLayout)
@@ -20,7 +20,7 @@ class PatientAdapter(private var list : MutableList<Int>)
 
     }
 
-    override fun onBindViewHolder(holder: PatientAdapter.viewHolder, position: Int) {
+    override fun onBindViewHolder(holder: viewHolder, position: Int) {
 
     }
 

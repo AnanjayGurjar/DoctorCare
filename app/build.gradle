@@ -56,8 +56,11 @@ dependencies {
     def roomVersion = "2.3.0"
     //room
     implementation "androidx.room:room-runtime:$roomVersion"
-    kapt "androidx.room:room-compiler:$roomVersion"
+    annotationProcessor "androidx.room:room-compiler:$roomVersion"
 
     //coroutine
     implementation "androidx.room:room-ktx:$roomVersion"
+
+    implementation 'com.intuit.sdp:sdp-android:1.0.6'
+
 }

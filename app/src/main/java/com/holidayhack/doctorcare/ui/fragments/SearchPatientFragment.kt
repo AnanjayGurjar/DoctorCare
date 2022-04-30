@@ -6,11 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.PathInterpolator
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.holidayhack.doctorcare.R
-import com.holidayhack.doctorcare.databinding.FragmentCreatePatientBinding
 import com.holidayhack.doctorcare.databinding.FragmentSearchPatientBinding
 import com.holidayhack.doctorcare.modals.Patient
 
@@ -83,6 +80,7 @@ class SearchPatientFragment : Fragment() {
 
         return patients
     }
+
 
 
 }

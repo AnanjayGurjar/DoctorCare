@@ -8,6 +8,4 @@ data class Patient(
     val issue: String,
     val patientId: Int,
     val consultationFee: String
-) {
-
-}
+)

@@ -5,22 +5,21 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.holidayhack.doctorcare.R
-import kotlinx.android.extensions.LayoutContainer
 
 class PatientAdapter(private var list : MutableList<Int>)
-    : RecyclerView.Adapter<PatientAdapter.viewHolder>() {
+    : RecyclerView.Adapter<PatientAdapter.ViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): viewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemLayout = LayoutInflater.from (parent.context)
             .inflate(R.layout.patients_list_items, parent, false)
-        return viewHolder(itemLayout)
+        return ViewHolder(itemLayout)
     }
 
-    inner class viewHolder(override val containerView: View) : RecyclerView.ViewHolder(containerView), LayoutContainer {
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     }
 
-    override fun onBindViewHolder(holder: viewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
     }
 

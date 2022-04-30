@@ -17,8 +17,8 @@
             android:id="@+id/action_firstFragment_to_createPatientFragment"
             app:destination="@id/createPatientFragment" />
         <action
-            android:id="@+id/action_firstFragment_to_doctorProfileFragment"
-            app:destination="@id/doctorProfileFragment" />
+            android:id="@+id/action_firstFragment_to_viewDoctorProfileFragment"
+            app:destination="@id/viewDoctorProfileFragment" />
     </fragment>
     <fragment
         android:id="@+id/createPatientFragment"
@@ -33,6 +33,9 @@
         <action
             android:id="@+id/action_searchPatientFragment_to_patientDetailFragment"
             app:destination="@id/patientDetailFragment" />
+        <action
+            android:id="@+id/action_searchPatientFragment_to_patientListFragment"
+            app:destination="@id/patientListFragment" />
     </fragment>
     <fragment
         android:id="@+id/doctorProfileFragment"
@@ -43,5 +46,27 @@
         android:id="@+id/patientDetailFragment"
         android:name="com.holidayhack.doctorcare.ui.fragments.PatientDetailFragment"
         android:label="fragment_patient_detail"
-        tools:layout="@layout/fragment_patient_detail" />
+        tools:layout="@layout/fragment_patient_detail" >
+        <argument
+            android:name="id"
+            app:argType="long" />
+    </fragment>
+    <fragment
+        android:id="@+id/patientListFragment"
+        android:name="com.holidayhack.doctorcare.ui.fragments.PatientListFragment"
+        android:label="fragment_patient_list"
+        tools:layout="@layout/fragment_patient_list" >
+        <action
+            android:id="@+id/action_patientListFragment_to_patientDetailFragment"
+            app:destination="@id/patientDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/viewDoctorProfileFragment"
+        android:name="com.holidayhack.doctorcare.ui.fragments.ViewDoctorProfileFragment"
+        android:label="fragment_view_doctor_profile"
+        tools:layout="@layout/fragment_view_doctor_profile" >
+        <action
+            android:id="@+id/action_viewDoctorProfileFragment_to_doctorProfileFragment"
+            app:destination="@id/doctorProfileFragment" />
+    </fragment>
 </navigation>

@@ -17,8 +17,8 @@ class DoctorViewModel (application: Application) : AndroidViewModel(application)
         }
     }
 
-    fun getDoctor (id : Long) : Doctor?{
-        return repo.getDoctor(id)
+    fun getDoctor () : Doctor?{
+        return repo.getDoctor()
     }
 
 }

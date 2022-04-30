@@ -7,17 +7,17 @@ import java.io.ByteArrayOutputStream
 
 class Convertor {
 
-    @TypeConverter
-    fun fromList (list : List<String>) : String{
-        return list.toString()
-    }
-
-    @TypeConverter
-    fun toList (stringList : String) : List<String>{
-        val newString = stringList.substring(1, stringList.length-2)
-        val list : List<String>  = newString.split(",")
-        return list
-    }
+//    @TypeConverter
+//    fun fromList (list : List<String>) : String{
+//        return list.toString()
+//    }
+//
+//    @TypeConverter
+//    fun toList (stringList : String) : List<String>{
+//        val newString = stringList.substring(1, stringList.length-2)
+//        val list : List<String>  = newString.split(",")
+//        return list
+//    }
 
     @TypeConverter
     fun bitmapToByteArray (bitmap : Bitmap) : ByteArray {

@@ -1,26 +1,26 @@
-package com.holidayhack.doctorcare
+package com.holidayhack.doctorcare.ui.activity
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+
 import com.google.firebase.auth.FirebaseAuth
-import com.holidayhack.doctorcare.authenticate.LoginActivity
 import com.holidayhack.doctorcare.authenticate.SignUpActivity
-import com.holidayhack.doctorcare.databinding.ActivityLoginBinding
 import com.holidayhack.doctorcare.databinding.ActivityMainBinding
-import com.holidayhack.doctorcare.ui.fragments.PatientDetailFragment
+import com.holidayhack.doctorcare.ui.fragments.DoctorProfileFragment
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityMainBinding
     val user = FirebaseAuth.getInstance().currentUser
 
-    private lateinit var binding : ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
@@ -31,7 +31,16 @@ class MainActivity : AppCompatActivity() {
             finish()
         }
 
+        addFragmentToActivity(supportFragmentManager, DoctorProfileFragment(), binding.container.id)
+    }
 
+    fun addFragmentToActivity(manager:
+                              FragmentManager, fragment: Fragment?, frameId: Int) {
+        val transaction: FragmentTransaction = manager.beginTransaction()
+        if (fragment != null) {
+            transaction.add(frameId, fragment)
+        }
+        transaction.commit()
     }
 
 }

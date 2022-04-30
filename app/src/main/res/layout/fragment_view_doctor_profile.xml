@@ -19,7 +19,7 @@
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:collapsedTitleGravity="start|left"
             app:expandedTitleGravity="bottom|center_horizontal"
-            app:title="Dr. Bhagya Patel"
+            app:title="My Profile"
             app:contentScrim="@color/app_green">
 
             <ImageView
@@ -32,7 +32,7 @@
                 app:layout_collapseParallaxMultiplier="0.5"/>
 
             <ImageView
-                android:id="@+id/employee_photoShow"
+                android:id="@+id/doctor_photo"
                 android:layout_width="@dimen/_96sdp"
                 android:layout_height="@dimen/_96sdp"
                 android:layout_gravity="center_horizontal|center_vertical"
@@ -70,11 +70,19 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/doctor_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/name_doctor"
+                    android:textSize="@dimen/_16sdp"
+                    android:layout_marginTop="@dimen/_4sdp"/>
+
+                <TextView
                     android:id="@+id/doctor_degree_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Degrees"
-                    android:layout_marginTop="@dimen/_4sdp"/>
+                    android:layout_marginTop="@dimen/_10sdp"/>
 
                 <TextView
                     android:id="@+id/doctor_degree_text"

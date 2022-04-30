@@ -9,7 +9,7 @@ data class Doctor(
     val name: String,
     val profilePhoto: Bitmap, //have used typeConvertor to convert from bitmap to byteArray and vise verse
     val email: String,
-    val degrees: List<String>,
+    val degrees: String, //try with List<string>
     val experience: Int
 ){
     @PrimaryKey (autoGenerate = true)

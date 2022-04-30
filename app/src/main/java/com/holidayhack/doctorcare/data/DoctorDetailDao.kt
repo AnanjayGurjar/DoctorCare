@@ -11,7 +11,7 @@ interface DoctorDetailDao {
     @Insert
     suspend fun insertDoc (doctor : Doctor)
 
-    @Query ("SELECT * FROM doctor WHERE 'id' = :id")
-    fun getDoctor (id : Long) : Doctor
+    @Query ("SELECT * FROM doctor")
+    fun getDoctor () : Doctor
 
 }

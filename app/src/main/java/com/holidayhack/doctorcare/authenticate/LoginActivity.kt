@@ -3,14 +3,10 @@ package com.holidayhack.doctorcare.authenticate
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Editable
 import android.util.Log
-import android.view.View
 import com.google.firebase.auth.FirebaseAuth
-import com.holidayhack.doctorcare.MainActivity
-import com.holidayhack.doctorcare.R
+import com.holidayhack.doctorcare.ui.activity.MainActivity
 import com.holidayhack.doctorcare.databinding.ActivityLoginBinding
-import com.holidayhack.doctorcare.databinding.ActivitySignUpBinding
 
 
 //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

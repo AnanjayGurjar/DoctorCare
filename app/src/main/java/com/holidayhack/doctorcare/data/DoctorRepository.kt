@@ -10,8 +10,8 @@ class DoctorRepository (context : Application) {
         return doctorDao.insertDoc(doctor)
     }
 
-    fun getDoctor (id : Long) : Doctor{
-        return doctorDao.getDoctor(id)
+    fun getDoctor () : Doctor{
+        return doctorDao.getDoctor()
     }
 
 }

@@ -62,5 +62,7 @@ dependencies {
     implementation "androidx.room:room-ktx:$roomVersion"
 
     implementation 'com.intuit.sdp:sdp-android:1.0.6'
+    implementation 'com.github.Drjacky:ImagePicker:2.1.15'
 
+    implementation "io.coil-kt:coil:2.0.0-rc03"
 }

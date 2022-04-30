@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.core.widget.addTextChangedListener
 import com.google.firebase.auth.FirebaseAuth
-import com.holidayhack.doctorcare.MainActivity
+import com.holidayhack.doctorcare.ui.activity.MainActivity
 import com.holidayhack.doctorcare.databinding.ActivitySignUpBinding
 
 class SignUpActivity : AppCompatActivity() {
@@ -25,6 +25,12 @@ class SignUpActivity : AppCompatActivity() {
         }
         binding.etPassword.addTextChangedListener{
             binding.etPassword.error = null
+        }
+
+        binding.btnSignIn.setOnClickListener{
+            val intent = Intent (this, LoginActivity::class.java)
+            startActivity(intent)
+            finish()
         }
 
         auth = FirebaseAuth.getInstance()

@@ -1,60 +1,88 @@
 package com.holidayhack.doctorcare.ui.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.PathInterpolator
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.holidayhack.doctorcare.R
+import com.holidayhack.doctorcare.databinding.FragmentCreatePatientBinding
+import com.holidayhack.doctorcare.databinding.FragmentSearchPatientBinding
+import com.holidayhack.doctorcare.modals.Patient
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [SearchPatientFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class SearchPatientFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private val TAG = "SearchPatientFragment"
+    private lateinit var binding: FragmentSearchPatientBinding
+    val db = FirebaseFirestore.getInstance()
+    val currentUser = FirebaseAuth.getInstance().currentUser
+    private var allPatients = ArrayList<Patient>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_search_patient, container, false)
+        binding = FragmentSearchPatientBinding.inflate(inflater,container,false);
+        return binding.getRoot();
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment SearchPatientFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            SearchPatientFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+    }
+
+    private fun getAllPatients(){
+        db.collection(currentUser!!.uid)
+            .get()
+            .addOnSuccessListener { result ->
+                for (document in result) {
+                    val patient: Patient = document.toObject(Patient::class.java)
+                    allPatients.add(patient)
                 }
             }
+            .addOnFailureListener { exception ->
+                Log.d(TAG, "Error getting documents: ", exception)
+            }
     }
+
+    private fun getPatientById(patientId: Int): Patient?{
+        var patient: Patient? = null
+        db.collection(currentUser!!.uid).document(patientId.toString())
+            .get()
+            .addOnSuccessListener { result ->
+                if(result != null){
+                    patient= result.toObject(Patient::class.java)
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.d(TAG, "Error getting documents: ", exception)
+            }
+
+        return patient
+    }
+
+    private fun getPatientByName(pateintName: String): ArrayList<Patient>{
+        var patients = ArrayList<Patient>()
+        db.collection(currentUser!!.uid)
+            .whereEqualTo("name", pateintName)
+            .get()
+            .addOnSuccessListener { documents ->
+                for (document in documents) {
+                    val patient: Patient = document.toObject(Patient::class.java)
+                    patients.add(patient);
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.w(TAG, "Error getting documents: ", exception)
+            }
+
+        return patients
+    }
+
+
 }

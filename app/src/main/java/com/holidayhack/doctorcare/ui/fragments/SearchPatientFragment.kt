@@ -6,6 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.text.isDigitsOnly
+import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.holidayhack.doctorcare.databinding.FragmentSearchPatientBinding
@@ -31,6 +34,34 @@ class SearchPatientFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
+
+        binding.searchIdBtn.setOnClickListener {
+            var id  = binding.searchPatientId.text
+            if(id.isNullOrEmpty()){
+                Toast.makeText(requireContext(), "Please enter the id", Toast.LENGTH_SHORT).show()
+            }else if(!id.isDigitsOnly()){
+                Toast.makeText(requireContext(), "Invalid id, please check", Toast.LENGTH_SHORT).show()
+            }else{
+                findNavController().navigate(
+                    SearchPatientFragmentDirections.actionSearchPatientFragmentToPatientDetailFragment(id.toString().toLong())
+                )
+            }
+
+        }
+
+        binding.searchNameBtn.setOnClickListener {
+            var name = binding.searchPatientName.text
+            findNavController().navigate(
+                SearchPatientFragmentDirections.actionSearchPatientFragmentToPatientListFragment()
+            )
+        }
+
+        binding.viewAllPatientBtn.setOnClickListener {
+            findNavController().navigate(
+                SearchPatientFragmentDirections.actionSearchPatientFragmentToPatientListFragment()
+            )
+        }
     }
 
     private fun getAllPatients(){
@@ -47,21 +78,6 @@ class SearchPatientFragment : Fragment() {
             }
     }
 
-    private fun getPatientById(patientId: Int): Patient?{
-        var patient: Patient? = null
-        db.collection(currentUser!!.uid).document(patientId.toString())
-            .get()
-            .addOnSuccessListener { result ->
-                if(result != null){
-                    patient= result.toObject(Patient::class.java)
-                }
-            }
-            .addOnFailureListener { exception ->
-                Log.d(TAG, "Error getting documents: ", exception)
-            }
-
-        return patient
-    }
 
     private fun getPatientByName(pateintName: String): ArrayList<Patient>{
         var patients = ArrayList<Patient>()

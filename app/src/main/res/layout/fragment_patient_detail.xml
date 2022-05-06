@@ -13,9 +13,10 @@
         android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/appBar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:title="Bhagya Patel"
+            app:title=""
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:collapsedTitleGravity="left|start"
             app:expandedTitleGravity="bottom|left"
@@ -39,6 +40,12 @@
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="visible"/>
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -70,7 +77,6 @@
                         android:layout_marginRight="@dimen/_16sdp"
                         android:layout_weight="1"
                         android:fontFamily="@font/montserrat"
-
                         android:gravity="center_horizontal"
                         android:text="Age :"
                         android:textSize="16sp"
@@ -81,10 +87,8 @@
                         android:id="@+id/tv_patient_ageNum"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="20 Years"
                         android:fontFamily="@font/montserrat"
                         android:textSize="16sp"
-
                         android:gravity="center_horizontal"
                         android:layout_weight="1"
                         app:layout_constraintTop_toTopOf="parent"
@@ -94,43 +98,6 @@
 
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_6sdp"
-                    android:layout_gravity="center"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/tv_patient_height"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="@dimen/_16sdp"
-                        android:layout_weight="1"
-                        android:fontFamily="@font/montserrat"
-
-                        android:gravity="center_horizontal"
-                        android:text="Height :"
-                        android:textSize="16sp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/tv_patient_heightNum"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="180 cms"
-                        android:fontFamily="@font/montserrat"
-                        android:textSize="16sp"
-
-                        android:gravity="center_horizontal"
-                        android:layout_weight="1"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintStart_toStartOf="parent" />
-
-
-
-                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -157,7 +124,6 @@
                         android:id="@+id/tv_patient_weightNum"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="70 Kgs"
                         android:fontFamily="@font/montserrat"
                         android:textSize="16sp"
 
@@ -165,141 +131,117 @@
                         android:layout_weight="1"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintStart_toStartOf="parent" />
-
-
-
                 </LinearLayout>
-
-                <com.google.android.material.textview.MaterialTextView
-                    style="@style/ThemeOverlay.Material3.AutoCompleteTextView.OutlinedBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/_16sdp"
-                    android:hint="ID"
-
-
-                    >
-
-
-                </com.google.android.material.textview.MaterialTextView>
-
-
-                <com.google.android.material.textfield.TextInputLayout
-
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/_16sdp"
-                    android:hint="Enter Your Email"
-                    android:textColorHint="#3D3B3B"
-                    app:startIconTint="#c6ff00"
-                    app:boxStrokeColor="#c6ff00"
-                    app:hintTextColor="#c6ff00"
-                    >
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/user"
-                        android:textColor="#c6ff00"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="7dp"
-                        android:inputType="textEmailAddress"
-                        android:shadowColor="#8BC34A"
-                        android:textColorHint="#000000">
-
-                    </com.google.android.material.textfield.TextInputEditText>
-                </com.google.android.material.textfield.TextInputLayout>
-
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/secondLinear"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintTop_toBottomOf="@id/firstLinear">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:layout_marginStart="@dimen/_3sdp"
-                    >
+                    android:layout_margin="@dimen/_12sdp"
+                    android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/tv_patient_id"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="ID"
-                        android:layout_marginTop="@dimen/_5sdp"
-                        android:layout_marginStart="@dimen/_5sdp"/>
+                        android:text="PATIENT ID"
+                        android:layout_marginRight="20dp"
+                        android:fontFamily="sans-serif-black"
+                        android:textSize="20sp">
+
+                    </TextView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=":"
+                        android:layout_marginRight="20dp"
+                        android:fontFamily="sans-serif-black"
+                        android:textSize="20sp">
+
+                    </TextView>
+                    <TextView
+                        android:id="@+id/tv_patient_id"
+                        android:layout_marginLeft="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-black"
+                        android:textSize="20sp">
+
+                    </TextView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_12sdp"
+                    android:orientation="horizontal">
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_5sdp"
-                        android:layout_marginStart="@dimen/_3sdp"/>
+                        android:text="CONSULTATION FEES"
+                        android:layout_marginRight="20dp"
+                        android:fontFamily="sans-serif-black"
+                        android:textSize="20sp">
 
+                    </TextView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=":"
+                        android:layout_marginRight="20dp"
+                        android:fontFamily="sans-serif-black"
+                        android:textSize="20sp">
+
+                    </TextView>
+                    <TextView
+                        android:id="@+id/tv_consultancy_fee"
+                        android:layout_marginLeft="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-black"
+                        android:textSize="20sp">
+
+                    </TextView>
                 </LinearLayout>
 
                 <TextView
                     android:id="@+id/patient_issue"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Issue"
+                    android:text="Issue:"
+                    android:textSize="20sp"
+                    android:fontFamily="sans-serif-black"
                     android:layout_marginTop="@dimen/_10sdp"
-                    android:layout_marginStart="@dimen/_3sdp"/>
+                    android:layout_marginStart="@dimen/_12sdp"/>
 
                 <TextView
                     android:id="@+id/patient_issue_text"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="@dimen/_40sdp"
                     android:singleLine="false"
                     android:layout_weight="1"
-                    android:layout_marginStart="@dimen/_3sdp"/>
+                    android:textSize="@dimen/_20sdp"
+                    android:text="something"
+                    android:layout_marginStart="@dimen/_12sdp"/>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:layout_marginStart="@dimen/_3sdp">
 
-                    <TextView
-                        android:id="@+id/tv_patient_fee_label"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Consultation Fee"
-                        android:layout_marginTop="@dimen/_5sdp"/>
+<!--                <TextView-->
+<!--                    android:id="@+id/patient_note_label"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Note:"-->
+<!--                    android:textSize="20sp"-->
+<!--                    android:fontFamily="sans-serif-black"-->
+<!--                    android:layout_marginTop="@dimen/_10sdp"-->
+<!--                    android:layout_marginStart="@dimen/_3sdp"/>-->
 
-                    <TextView
-                        android:id="@+id/patient_fee"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:singleLine="false"
-                        android:layout_weight="1"
-                        android:layout_marginTop="@dimen/_5sdp"/>
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/patient_note_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Notes"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:layout_marginStart="@dimen/_3sdp"/>
-
-                <TextView
-                    android:id="@+id/patient_note_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:singleLine="false"
-                    android:layout_weight="1"
-                    android:layout_marginStart="@dimen/_3sdp"/>
-
+<!--                <TextView-->
+<!--                    android:id="@+id/patient_note_text"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="@dimen/_40sdp"-->
+<!--                    android:singleLine="false"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:layout_marginStart="@dimen/_3sdp"/>-->
             </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>

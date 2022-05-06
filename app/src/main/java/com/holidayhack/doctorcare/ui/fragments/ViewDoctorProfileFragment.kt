@@ -10,11 +10,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.holidayhack.doctorcare.R
 import com.holidayhack.doctorcare.databinding.FragmentDoctorProfileBinding
 import com.holidayhack.doctorcare.databinding.FragmentViewDoctorProfileBinding
 import com.holidayhack.doctorcare.modals.Doctor
 import com.holidayhack.doctorcare.ui.viewModels.DoctorViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.io.ByteArrayOutputStream
 import kotlin.properties.Delegates
 
@@ -33,7 +37,7 @@ class ViewDoctorProfileFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+        //Inflate the layout for this fragment
         binding = FragmentViewDoctorProfileBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -41,17 +45,27 @@ class ViewDoctorProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val doctor : Doctor? = viewModel.getDoctor()
+        lifecycleScope.launch(Dispatchers.IO){
+            val doctor : Doctor? = viewModel.getDoctor()
 
-        if (doctor != null){
-            binding.doctorDegreeText.text = doctor.degrees.toString()
-            binding.doctorExperienceText.text = doctor.experience.toString()
-            binding.doctorName.text = doctor.name
+            launch(Dispatchers.Main){
+                if (doctor != null){
+                    binding.doctorDegreeText.text = doctor.degrees
+                    binding.doctorExperienceText.text = doctor.experience.toString()
+                    binding.doctorName.text = doctor.name
+                    binding.doctorEmailTextShow.text = doctor.email
 
-            val imgUri = getUri(doctor.profilePhoto)
-            binding.doctorPhoto.setImageURI(imgUri)
+                    val imgUri = getUri(doctor.profilePhoto)
+                    binding.doctorPhoto.setImageURI(imgUri)
+                }
+            }
         }
 
+        binding.editProfileBtn.setOnClickListener {
+            findNavController().navigate(
+                ViewDoctorProfileFragmentDirections.actionViewDoctorProfileFragmentToDoctorProfileFragment()
+            )
+        }
     }
 
     private fun getUri(bitmap : Bitmap): Uri {

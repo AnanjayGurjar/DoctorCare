@@ -26,18 +26,16 @@ class CreatePatientFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentCreatePatientBinding.inflate(inflater,container,false);
-        return binding.getRoot();
-
+        return binding.getRoot()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val patient = Patient("ananjay", 20, "60kg", "fever", 100, "500")
-        binding.btnPushdata.setOnClickListener {
-            addPatient(patient)
+
+        binding.savePatientProfileBtn.setOnClickListener {
+//            addPatient(patient)
         }
     }
-
     private fun addPatient(patient: Patient){
         db.collection("${currentUser!!.uid}").document(patient.patientId.toString())
             .set(patient)

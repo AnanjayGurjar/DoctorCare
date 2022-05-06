@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.holidayhack.doctorcare.databinding.FragmentSearchPatientBinding
@@ -31,6 +32,25 @@ class SearchPatientFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.searchIdBtn.setOnClickListener {
+
+            val id : Long = binding.searchPatientId.text.toString().toLong()
+            findNavController().navigate(
+                SearchPatientFragmentDirections.actionSearchPatientFragmentToPatientDetailFragment(id)
+            )
+        }
+
+        binding.searchNameBtn.setOnClickListener {
+            findNavController().navigate(
+                SearchPatientFragmentDirections.actionSearchPatientFragmentToPatientListFragment()
+            )
+        }
+
+        binding.viewAllPatientBtn.setOnClickListener {
+            findNavController().navigate(
+                SearchPatientFragmentDirections.actionSearchPatientFragmentToPatientListFragment()
+            )
+        }
     }
 
     private fun getAllPatients(){

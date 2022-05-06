@@ -33,7 +33,7 @@ class CreatePatientFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val patient = Patient("ananjay", 20, "60kg", "fever", 100, "500")
-        binding.btnPushdata.setOnClickListener {
+        binding.savePatientProfileBtn.setOnClickListener {
             addPatient(patient)
         }
     }

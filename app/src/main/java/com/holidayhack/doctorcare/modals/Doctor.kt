@@ -10,8 +10,10 @@ data class Doctor(
     val profilePhoto: Bitmap, //have used typeConvertor to convert from bitmap to byteArray and vise verse
     val email: String,
     val degrees: String, //try with List<string>
-    val experience: Int
-){
+    val experience: Int,
+
     @PrimaryKey (autoGenerate = true)
     val id : Long = 0
+){
+
 }

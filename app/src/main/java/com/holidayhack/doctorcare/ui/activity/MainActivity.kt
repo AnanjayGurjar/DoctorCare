@@ -11,13 +11,13 @@ import com.google.firebase.auth.FirebaseAuth
 import com.holidayhack.doctorcare.authenticate.SignUpActivity
 import com.holidayhack.doctorcare.databinding.ActivityMainBinding
 import com.holidayhack.doctorcare.ui.fragments.DoctorProfileFragment
-import kotlinx.android.synthetic.main.activity_main.*
+import com.holidayhack.doctorcare.ui.fragments.ViewDoctorProfileFragment
+
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     val user = FirebaseAuth.getInstance().currentUser
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,12 +30,10 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
-
-        addFragmentToActivity(supportFragmentManager, DoctorProfileFragment(), binding.container.id)
+//        addFragmentToActivity(supportFragmentManager, ViewDoctorProfileFragment(), binding.container.id)
     }
 
-    fun addFragmentToActivity(manager:
-                              FragmentManager, fragment: Fragment?, frameId: Int) {
+    fun addFragmentToActivity(manager: FragmentManager, fragment: Fragment?, frameId: Int) {
         val transaction: FragmentTransaction = manager.beginTransaction()
         if (fragment != null) {
             transaction.add(frameId, fragment)

@@ -19,7 +19,7 @@ abstract class DoctorRoomDatabase : RoomDatabase (){
             Room.databaseBuilder(
                 context.applicationContext,
                 DoctorRoomDatabase::class.java,
-                "movie_database"
+                "doctor_database"
             ).fallbackToDestructiveMigration().build().also { instance = it }
         }
     }

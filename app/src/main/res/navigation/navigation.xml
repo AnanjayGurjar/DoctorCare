@@ -3,21 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/firstFragment">
+    app:startDestination="@id/homeFragment">
 
     <fragment
-        android:id="@+id/firstFragment"
-        android:name="com.holidayhack.doctorcare.ui.fragments.FirstFragment"
+        android:id="@+id/homeFragment"
+        android:name="com.holidayhack.doctorcare.ui.fragments.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_firstFragment_to_searchPatientFragment"
+            android:id="@+id/action_homeFragment_to_searchPatientFragment"
             app:destination="@id/searchPatientFragment" />
         <action
-            android:id="@+id/action_firstFragment_to_createPatientFragment"
+            android:id="@+id/action_homeFragment_to_createPatientFragment"
             app:destination="@id/createPatientFragment" />
         <action
-            android:id="@+id/action_firstFragment_to_viewDoctorProfileFragment"
+            android:id="@+id/action_homeFragment_to_viewDoctorProfileFragment"
             app:destination="@id/viewDoctorProfileFragment" />
     </fragment>
     <fragment
@@ -41,7 +41,11 @@
         android:id="@+id/doctorProfileFragment"
         android:name="com.holidayhack.doctorcare.ui.fragments.DoctorProfileFragment"
         android:label="fragment_doctor_profile"
-        tools:layout="@layout/fragment_doctor_profile" />
+        tools:layout="@layout/fragment_doctor_profile" >
+        <action
+            android:id="@+id/action_doctorProfileFragment_to_viewDoctorProfileFragment"
+            app:destination="@id/viewDoctorProfileFragment" />
+    </fragment>
     <fragment
         android:id="@+id/patientDetailFragment"
         android:name="com.holidayhack.doctorcare.ui.fragments.PatientDetailFragment"

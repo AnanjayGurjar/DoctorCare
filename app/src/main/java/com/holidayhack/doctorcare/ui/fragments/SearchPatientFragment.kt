@@ -50,11 +50,20 @@ class SearchPatientFragment : Fragment() {
 
         }
 
+
         binding.searchNameBtn.setOnClickListener {
-            var name = binding.searchPatientName.text
-            findNavController().navigate(
-                SearchPatientFragmentDirections.actionSearchPatientFragmentToPatientListFragment()
-            )
+            val name: String = binding.searchPatientName.text.toString()
+            if (name.isNullOrEmpty()) {
+                Toast.makeText(
+                    requireContext(),
+                    "Please fill the name field first",
+                    Toast.LENGTH_SHORT
+                ).show()
+            } else {
+                findNavController().navigate(
+                    SearchPatientFragmentDirections.actionSearchPatientFragmentToPatientListFragment(name)
+                )
+            }
         }
 
         binding.viewAllPatientBtn.setOnClickListener {
@@ -64,19 +73,19 @@ class SearchPatientFragment : Fragment() {
         }
     }
 
-    private fun getAllPatients(){
-        db.collection(currentUser!!.uid)
-            .get()
-            .addOnSuccessListener { result ->
-                for (document in result) {
-                    val patient: Patient = document.toObject(Patient::class.java)
-                    allPatients.add(patient)
-                }
-            }
-            .addOnFailureListener { exception ->
-                Log.d(TAG, "Error getting documents: ", exception)
-            }
-    }
+//    private fun getAllPatients(){
+//        db.collection(currentUser!!.uid)
+//            .get()
+//            .addOnSuccessListener { result ->
+//                for (document in result) {
+//                    val patient: Patient = document.toObject(Patient::class.java)
+//                    allPatients.add(patient)
+//                }
+//            }
+//            .addOnFailureListener { exception ->
+//                Log.d(TAG, "Error getting documents: ", exception)
+//            }
+//    }
 
 
     private fun getPatientByName(pateintName: String): ArrayList<Patient>{

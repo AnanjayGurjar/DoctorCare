@@ -13,6 +13,7 @@
         <entry key="app/src/main/res/layout/fragment_doctor_profile.xml" value="0.14356884057971014" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.20334320068359377" />
         <entry key="app/src/main/res/layout/fragment_patient_detail.xml" value="0.3063275925656583" />
+        <entry key="app/src/main/res/layout/fragment_patient_list.xml" value="0.14361702127659576" />
         <entry key="app/src/main/res/layout/fragment_search_patient.xml" value="0.17475891113281256" />
         <entry key="app/src/main/res/layout/fragment_view_doctor_profile.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_view_patients.xml" value="0.14361702127659576" />

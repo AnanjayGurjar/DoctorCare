@@ -24,7 +24,11 @@
         android:id="@+id/createPatientFragment"
         android:name="com.holidayhack.doctorcare.ui.fragments.CreatePatientFragment"
         android:label="fragment_create_patient"
-        tools:layout="@layout/fragment_create_patient" />
+        tools:layout="@layout/fragment_create_patient" >
+        <action
+            android:id="@+id/action_createPatientFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
     <fragment
         android:id="@+id/searchPatientFragment"
         android:name="com.holidayhack.doctorcare.ui.fragments.SearchPatientFragment"
@@ -54,6 +58,9 @@
         <argument
             android:name="id"
             app:argType="long" />
+        <action
+            android:id="@+id/action_patientDetailFragment_to_searchPatientFragment"
+            app:destination="@id/searchPatientFragment" />
     </fragment>
     <fragment
         android:id="@+id/patientListFragment"
@@ -63,6 +70,10 @@
         <action
             android:id="@+id/action_patientListFragment_to_patientDetailFragment"
             app:destination="@id/patientDetailFragment" />
+        <argument
+            android:name="name"
+            app:argType="string"
+            android:defaultValue="all" />
     </fragment>
     <fragment
         android:id="@+id/viewDoctorProfileFragment"

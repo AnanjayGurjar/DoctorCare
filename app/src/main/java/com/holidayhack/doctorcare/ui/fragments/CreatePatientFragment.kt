@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.holidayhack.doctorcare.R
@@ -19,6 +20,7 @@ class CreatePatientFragment : Fragment() {
     val db = FirebaseFirestore.getInstance()
     val currentUser = FirebaseAuth.getInstance().currentUser
     lateinit var binding: FragmentCreatePatientBinding
+    private lateinit var patient : Patient
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,13 +34,23 @@ class CreatePatientFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val patient = Patient("ananjay", 20, "60kg", "fever", 100, "500")
+
         binding.savePatientProfileBtn.setOnClickListener {
-            addPatient(patient)
+            addPatient()
         }
     }
 
-    private fun addPatient(patient: Patient){
+    private fun addPatient(){
+
+        val name = binding.etName.editText!!.text.toString()
+        val issue = binding.etIssue.editText!!.text.toString()
+        val age = binding.etAge.editText!!.text.toString().toInt()
+        val weight = binding.etWeight.editText!!.text.toString()
+        val fee = binding.etFee.editText!!.text.toString()
+        val id = binding.etId.editText!!.text.toString().toLong()
+
+        patient = Patient(name, age, weight,issue, id, fee)
+
         db.collection("${currentUser!!.uid}").document(patient.patientId.toString())
             .set(patient)
             .addOnSuccessListener {
@@ -47,6 +59,10 @@ class CreatePatientFragment : Fragment() {
             .addOnFailureListener {
                 Log.e(TAG, "addPatient: ${it.message}", )
             }
+
+        findNavController().navigate(
+            CreatePatientFragmentDirections.actionCreatePatientFragmentToHomeFragment()
+        )
     }
 
 }

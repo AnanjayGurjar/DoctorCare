@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -33,17 +34,27 @@ class SearchPatientFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.searchIdBtn.setOnClickListener {
-
             val id : Long = binding.searchPatientId.text.toString().toLong()
+
             findNavController().navigate(
                 SearchPatientFragmentDirections.actionSearchPatientFragmentToPatientDetailFragment(id)
             )
         }
 
+
         binding.searchNameBtn.setOnClickListener {
-            findNavController().navigate(
-                SearchPatientFragmentDirections.actionSearchPatientFragmentToPatientListFragment()
-            )
+            val name: String = binding.searchPatientName.text.toString()
+            if (name.isNullOrEmpty()) {
+                Toast.makeText(
+                    requireContext(),
+                    "Please fill the name field first",
+                    Toast.LENGTH_SHORT
+                ).show()
+            } else {
+                findNavController().navigate(
+                    SearchPatientFragmentDirections.actionSearchPatientFragmentToPatientListFragment(name)
+                )
+            }
         }
 
         binding.viewAllPatientBtn.setOnClickListener {
@@ -53,19 +64,19 @@ class SearchPatientFragment : Fragment() {
         }
     }
 
-    private fun getAllPatients(){
-        db.collection(currentUser!!.uid)
-            .get()
-            .addOnSuccessListener { result ->
-                for (document in result) {
-                    val patient: Patient = document.toObject(Patient::class.java)
-                    allPatients.add(patient)
-                }
-            }
-            .addOnFailureListener { exception ->
-                Log.d(TAG, "Error getting documents: ", exception)
-            }
-    }
+//    private fun getAllPatients(){
+//        db.collection(currentUser!!.uid)
+//            .get()
+//            .addOnSuccessListener { result ->
+//                for (document in result) {
+//                    val patient: Patient = document.toObject(Patient::class.java)
+//                    allPatients.add(patient)
+//                }
+//            }
+//            .addOnFailureListener { exception ->
+//                Log.d(TAG, "Error getting documents: ", exception)
+//            }
+//    }
 
     private fun getPatientById(patientId: Int): Patient?{
         var patient: Patient? = null

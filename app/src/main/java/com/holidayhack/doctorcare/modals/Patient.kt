@@ -6,6 +6,6 @@ data class Patient(
     val age: Int,
     val weigth: String,
     val issue: String,
-    val patientId: Int,
+    val patientId: Long,
     val consultationFee: String
 )

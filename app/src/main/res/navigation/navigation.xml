@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.holidayhack.doctorcare.ui.fragments.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_searchPatientFragment"
+            app:destination="@id/searchPatientFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_createPatientFragment"
+            app:destination="@id/createPatientFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_viewDoctorProfileFragment"
+            app:destination="@id/viewDoctorProfileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createPatientFragment"
+        android:name="com.holidayhack.doctorcare.ui.fragments.CreatePatientFragment"
+        android:label="fragment_create_patient"
+        tools:layout="@layout/fragment_create_patient" >
+        <action
+            android:id="@+id/action_createPatientFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchPatientFragment"
+        android:name="com.holidayhack.doctorcare.ui.fragments.SearchPatientFragment"
+        android:label="fragment_search_patient"
+        tools:layout="@layout/fragment_search_patient" >
+        <action
+            android:id="@+id/action_searchPatientFragment_to_patientDetailFragment"
+            app:destination="@id/patientDetailFragment" />
+        <action
+            android:id="@+id/action_searchPatientFragment_to_patientListFragment"
+            app:destination="@id/patientListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/doctorProfileFragment"
+        android:name="com.holidayhack.doctorcare.ui.fragments.DoctorProfileFragment"
+        android:label="fragment_doctor_profile"
+        tools:layout="@layout/fragment_doctor_profile" >
+        <action
+            android:id="@+id/action_doctorProfileFragment_to_viewDoctorProfileFragment"
+            app:destination="@id/viewDoctorProfileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/patientDetailFragment"
+        android:name="com.holidayhack.doctorcare.ui.fragments.PatientDetailFragment"
+        android:label="fragment_patient_detail"
+        tools:layout="@layout/fragment_patient_detail" >
+        <argument
+            android:name="id"
+            app:argType="long" />
+        <action
+            android:id="@+id/action_patientDetailFragment_to_searchPatientFragment"
+            app:destination="@id/searchPatientFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/patientListFragment"
+        android:name="com.holidayhack.doctorcare.ui.fragments.PatientListFragment"
+        android:label="fragment_patient_list"
+        tools:layout="@layout/fragment_patient_list" >
+        <action
+            android:id="@+id/action_patientListFragment_to_patientDetailFragment"
+            app:destination="@id/patientDetailFragment" />
+        <argument
+            android:name="name"
+            app:argType="string"
+            android:defaultValue="all" />
+    </fragment>
+    <fragment
+        android:id="@+id/viewDoctorProfileFragment"
+        android:name="com.holidayhack.doctorcare.ui.fragments.ViewDoctorProfileFragment"
+        android:label="fragment_view_doctor_profile"
+        tools:layout="@layout/fragment_view_doctor_profile" >
+        <action
+            android:id="@+id/action_viewDoctorProfileFragment_to_doctorProfileFragment"
+            app:destination="@id/doctorProfileFragment" />
+    </fragment>
+</navigation>
